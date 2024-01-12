@@ -24,7 +24,7 @@ app.get(
       next();
     },
     (req, res) => {
-      res.send({
+      res.json({
         time: req.time
       });
     }
