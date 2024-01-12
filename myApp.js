@@ -14,10 +14,18 @@ app.get("/", function (req, res) {
 // Assets at the /public route
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get("/json", (req, res) => {
-  res.json({
-    message: "Hello json",
-  });
+app.get('/json', function (req, res) {
+    let msgStyle = process.env.MESSAGE_STYLE;
+
+    let msg
+
+    if (msgStyle === "uppercase") {
+        msg = "Hello json".toUpperCase();
+    } else {
+        msg = "Hello json";
+    }
+
+    res.json({ "message": msg });
 });
 
 module.exports = app;
