@@ -5,7 +5,14 @@ require("dotenv").config();
 // app.get("/", function (req, res) {
 // res.send("Hello Express");
 // });
-//
+//´
+app.use(function middleware(req, res, next) {
+    var string = req.method + " " + req.path + " - " + req.ip;
+    console.log(string)
+    next();
+  });
+  
+  
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
@@ -27,14 +34,6 @@ app.get("/json", function (req, res) {
   }
 
   res.json({ message: msg });
-});
-
-app.use(function middleware(req, res, next) {
-  var string = req.method + " " + req.path + " - " + req.ip;
-  console.log(string)
-  // Do something
-  // Call the next function in line:
-  next();
 });
 
 module.exports = app;
