@@ -13,6 +13,6 @@ app.get("/", function(req, res) {
 app.use(express.static(__dirname + "/public"));
 
 // Assets at the /public route
-app.use("/public", express.static(__dirname + "/public/estyle.css"));
+app.use("/public", express.static(__dirname + "/public/style.css"));
 
 module.exports = app;
